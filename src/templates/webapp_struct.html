@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Wine Quality</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+    :root {
+      --wine: #6a1b2c;
+      --wine-dark: #4a0f1e;
+      --gold: #d4a056;
+      --bg: #f8f5f2;
+      --card: #ffffff;
+      --text: #2d2d2d;
+      --muted: #7a7a7a;
+      --radius: 12px;
+      --shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 30px;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      text-align: center;
+      color: var(--wine);
+      margin-bottom: 8px;
+    }
+
+    p.sub {
+      text-align: center;
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 30px;
+    }
+
+    form {
+      background: var(--card);
+      padding: 30px;
+      max-width: 850px;
+      margin: auto;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border-left: 5px solid var(--wine);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    label {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--wine-dark);
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 12px;
+      border-radius: var(--radius);
+      border: 2px solid #ddd;
+      font-size: 1rem;
+      transition: all 0.25s ease;
+      background: #fafafa;
+    }
+
+    input[type="number"]:focus {
+      border-color: var(--wine);
+      background: #fff;
+      box-shadow: 0 0 6px rgba(106, 27, 44, 0.3);
+      outline: none;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 25px;
+    }
+
+    input[type="submit"] {
+      background: var(--wine);
+      padding: 12px 25px;
+      border: none;
+      color: #fff;
+      font-size: 1rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.25s ease, transform 0.1s ease;
+      border-bottom: 3px solid var(--wine-dark);
+    }
+
+    input[type="submit"]:hover {
+      background: var(--wine-dark);
+      transform: translateY(-2px);
+    }
+
+    h3.result {
+      margin-top: 30px;
+      max-width: 850px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 20px;
+      font-size: 1.3rem;
+      background: var(--card);
+      border-left: 5px solid var(--gold);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      color: var(--wine-dark);
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Wine Quality Predictor</h1>
+  <p class="sub">Introduce a wine's chemical characteristics to generate quality prediction</p>
+
+  <form action="/" method="post">
+    <div class="grid">
+
+        <input type="submit" value="Predict">
+
+      <div>
+        <label>Volatile acidity</label>
+        <input type="number" min="0" max="2" step="0.01" name="val1" required>
+      </div>
+
+      <div>
+        <label>Citric acid</label>
+        <input type="number" min="0" max="1" step="0.01" name="val2" required>
+      </div>
+
+      <div>
+        <label>Residual sugar</label>
+        <input type="number" min="0" max="16" step="0.1" name="val3" required>
+      </div>
+
+      <div>
+        <label>Chlorides</label>
+        <input type="number" min="0" max="1" step="0.01" name="val4" required>
+      </div>
+
+      <div>
+        <label>Total sulfur dioxide</label>
+        <input type="number" min="6" max="290" step="1" name="val5" required>
+      </div>
+
+      <div>
+        <label>Density</label>
+        <input type="number" min="0.98" max="1.1" step="0.01" name="val6" required>
+      </div>
+
+      <div>
+        <label>pH</label>
+        <input type="number" min="2.75" max="4" step="0.01" name="val7" required>
+      </div>
+
+      <div>
+        <label>Sulphates</label>
+        <input type="number" min="0.3" max="2" step="0.01" name="val8" required>
+      </div>
+
+      <div>
+        <label>Alcohol</label>
+        <input type="number" min="8.4" max="15" step="0.01" name="val9" required>
+      </div>
+
+    </div>
+
+    <div class="actions">
+      <input type="submit" value="Predecir calidad">
+    </div>
+  </form>
+
+  {% if prediction is not none %}
+    <h3 class="result">Predictionn: {{ prediction }}</h3>
+  {% endif %}
+
+</body>
+</html>
