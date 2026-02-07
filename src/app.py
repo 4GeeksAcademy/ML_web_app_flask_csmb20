@@ -2,7 +2,7 @@ from flask import Flask, request, render_template
 from pickle import dump, load
 
 app = Flask(__name__)
-model = load(open("/Users/csmb/Documents/Bootcamp Data Science & Machine Learning/Python files/Data Science and Machine Learning - 4Geeks/18 - K-Nearest Neighbors Clustering/redwine_model_k_neighbors_cluster.sav", "rb"))
+model = load(open("/workspaces/ML_web_app_flask_csmb20/models/redwine_model_k_neighbors_cluster.sav", "rb"))
 class_dict = {
     "0": "low quality",
     "1": "medium quality",
